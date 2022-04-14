@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import Router from 'next/router'
-import { Button } from '@mantine/core';
-import { Notification } from '@mantine/core';
-import { showNotification } from '@mantine/notifications';
+import { MdDone } from "react-icons/md";
+import { showNotification, updateNotification } from '@mantine/notifications';
 
 const Signup = () => {
     const [credentials, setCredentials] = useState({ name: "", email: "", password: "" })
@@ -22,6 +21,15 @@ const Signup = () => {
         if (json.success) {
             // Save the auth token and redirect
             localStorage.setItem('token', json.authtoken);
+            updateNotification({
+                id: 'signin',
+                color: 'green',
+                autoClose: 5000,
+                icon: <MdDone />,
+                title: "Done",
+                message: 'Account Created Successfully',
+                loading: false,
+            })
             Router.push("/");
         }
         else {
@@ -36,7 +44,18 @@ const Signup = () => {
             <div className="px-6 py-4">
                 <h2 className="text-3xl font-bold text-center text-gray-700 dark:text-white">Signup</h2>
                 <h3 className="mt-1 text-xl font-medium text-center text-gray-600 dark:text-gray-200">Create Account</h3>
-                <form onSubmit={handleSubmit} >
+                <form onSubmit={(e) => {
+                    handleSubmit(e);
+                    showNotification({
+                        id: 'signin',
+                        autoClose: false,
+                        disallowClose: true,
+                        color: 'cyan',
+                        title: "Loding",
+                        message: 'Creating New Account',
+                        loading: true,
+                    })
+                }} >
                     <div className="w-full mt-4">
                         <input className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300" name="email" type="email" placeholder="Email Address" required onChange={onChange} />
                     </div>

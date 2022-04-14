@@ -12,43 +12,33 @@ export default async function handler(
   res: NextApiResponse
 ) {
   let success: boolean = false;
-  //   await prisma.user.createMany({
-  //     data: [
-  //       { email: "test@test.com", password: "password" },
-  //       { email: "pratham@gmail.com", password: "09654" },
-  //       { email: "Monket@kk.com", password: "321lol" },
-  //     ],
-  //   });
+  const { email, password } = req.body;
+  console.log(req.body)
   if (req.method === "POST") {
     try {
       const user = await prisma.user.findUnique({
         where: {
-          email: req.body.email,
+          email: email,
         },
       });
-      if (user) {
+      console.log(user)
+      if (!user) {
         return res.status(400).json({
           success: false,
-          message: "Sorry a user with this email already exists",
+          message: "Please try to login with correct credentials",
         });
       }
-      const salt = await bcrypt.genSalt(10);
-      const secPass = await bcrypt.hash(req.body.password, salt);
-      // Create a new user
-      const results = await prisma.user.create({
-        data: {
-          email: req.body.email,
-          password: secPass,
-        },
-      });
-      const Uid = await prisma.user.findUnique({
-        where: {
-          email: req.body.email,
-        },
-      });
-      const authtoken = jwt.sign(Uid?.id, JWT_SECRET);
+      const userPassword = user.password;
+      const passwordCompare = await bcrypt.compare(password, userPassword);
+      if (!passwordCompare) {
+        return res.status(400).json({
+          success: false,
+          message: "Please try to login with correct credentials",
+        });
+      }
+      const authtoken = jwt.sign(user.id, JWT_SECRET);
       success = true;
-      res.status(200).json({ success, authtoken });
+      res.status(200).json({ success: true, authtoken });
     } catch (error: any) {
       console.error(error.message);
       res.status(500).send("Internal Server Error");

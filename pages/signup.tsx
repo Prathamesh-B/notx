@@ -1,20 +1,19 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import Router from 'next/router'
-import { MdDone } from "react-icons/md";
+import { MdOutlineDone, MdOutlineClose } from "react-icons/md";
 import { showNotification, updateNotification } from '@mantine/notifications';
 
 const Signup = () => {
-    const [credentials, setCredentials] = useState({ name: "", email: "", password: "" })
+    const [credentials, setCredentials] = useState({ email: "", password: "" })
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        console.log("Req Start")
         const response = await fetch("api/signup", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password })
+            body: JSON.stringify({ email: credentials.email, password: credentials.password })
         });
         const json = await response.json()
         console.log(json);
@@ -25,7 +24,7 @@ const Signup = () => {
                 id: 'signin',
                 color: 'green',
                 autoClose: 5000,
-                icon: <MdDone />,
+                icon: <MdOutlineDone />,
                 title: "Done",
                 message: 'Account Created Successfully',
                 loading: false,
@@ -33,12 +32,21 @@ const Signup = () => {
             Router.push("/");
         }
         else {
-            alert("Invalid credentials");
+            updateNotification({
+                id: 'signin',
+                color: 'red',
+                autoClose: 5000,
+                icon: <MdOutlineClose />,
+                title: "Error",
+                message: 'Account with this email already exists',
+                loading: false,
+            })
         }
     }
     const onChange = (e: any) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value })
     }
+
     return (
         <div className="mt-14 w-auto max-w-sm mx-auto overflow-hidden bg-white rounded-lg dark:bg-gray-800">
             <div className="px-6 py-4">

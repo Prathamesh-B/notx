@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 
 const Home: NextPage = () => {
   return (
-    <main className="font-mono bg-white mt-48">
+    <main className="font-mono bg-white mt-36">
       <h2 className="p-4 text-5xl md:text-6xl font-bold text-gray-800 text-center">
         Best Note Taking Website!
       </h2>

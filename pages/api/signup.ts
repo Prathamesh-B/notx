@@ -21,15 +21,16 @@ export default async function handler(
   //   });
   if (req.method === "POST") {
     try {
+      console.log(req.body)
       const user = await prisma.user.findUnique({
         where: {
           email: req.body.email,
         },
       });
       if (user) {
-        return res.status(400).json({
+        return res.status(409).json({
           success: false,
-          message: "Sorry a user with this email already exists",
+          message: "Account with this email already exists",
         });
       }
       const salt = await bcrypt.genSalt(10);
@@ -54,10 +55,10 @@ export default async function handler(
       res.status(500).send("Internal Server Error");
     }
 
-    // const allUsers = await prisma.user.findMany();
+    const allUsers = await prisma.user.findMany();
     //   const allNotes = await prisma.notes.findMany();
     //   console.log(allNotes);
-    // console.log(allUsers);
+    console.log(allUsers);
   } else {
     res.status(500).send("Internal Server Error");
   }

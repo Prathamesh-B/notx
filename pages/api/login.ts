@@ -23,7 +23,7 @@ export default async function handler(
       });
       console.log(user)
       if (!user) {
-        return res.status(400).json({
+        return res.status(422).json({
           success: false,
           message: "Please try to login with correct credentials",
         });
@@ -31,7 +31,7 @@ export default async function handler(
       const userPassword = user.password;
       const passwordCompare = await bcrypt.compare(password, userPassword);
       if (!passwordCompare) {
-        return res.status(400).json({
+        return res.status(403).json({
           success: false,
           message: "Please try to login with correct credentials",
         });

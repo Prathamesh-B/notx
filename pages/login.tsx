@@ -84,7 +84,6 @@ const Login = () => {
                             minLength={3}
                             maxLength={16}
                             onChange={onChange}
-                            label="Password"
                             placeholder="Password"
                             required
                         />

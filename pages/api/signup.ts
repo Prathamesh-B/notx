@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -35,7 +34,7 @@ export default async function handler(
       const salt = await bcrypt.genSalt(10);
       const secPass = await bcrypt.hash(req.body.password, salt);
       // Create a new user
-      const results = await prisma.user.create({
+      await prisma.user.create({
         data: {
           email: req.body.email,
           password: secPass,
@@ -51,13 +50,15 @@ export default async function handler(
       res.status(200).json({ success, authtoken });
     } catch (error: any) {
       console.error(error.message);
-      res.status(500).send("Internal Server Error");
+      res
+        .status(500)
+        .send({ success: false, message: "Internal Server Error" });
     }
     // const allUsers = await prisma.user.findMany();
     //   const allNotes = await prisma.notes.findMany();
     //   console.log(allNotes);
     // console.log(allUsers);
   } else {
-    res.status(500).send("Internal Server Error");
+    res.status(500).send({ success: false, message: "Internal Server Error" });
   }
 }

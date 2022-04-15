@@ -1,15 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Router from 'next/router'
 import { PasswordInput, Input } from '@mantine/core';
 import { showNotification, updateNotification } from '@mantine/notifications';
-import { MdOutlineDone, MdOutlineClose } from "react-icons/md";
+import { MdOutlineClose } from "react-icons/md";
+import { FaSignInAlt } from "react-icons/fa";
+import { MdOutlineReportGmailerrorred } from "react-icons/md";
 
 const Login = () => {
+    useEffect(() => {
+        if (localStorage.getItem('token')) {
+            Router.push("/");
+        }
+    }, [])
     const [credentials, setCredentials] = useState({ email: "", password: "" })
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        const response = await fetch('/api/login', {
+        const response = await fetch('/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -24,8 +31,8 @@ const Login = () => {
                 id: 'signin',
                 color: 'green',
                 autoClose: 5000,
-                icon: <MdOutlineDone />,
-                title: "Done",
+                icon: <FaSignInAlt />,
+                title: "Logging",
                 message: 'Logged in Successfully',
                 loading: false,
             })
@@ -52,9 +59,7 @@ const Login = () => {
         <div className="mt-14 w-auto max-w-sm mx-auto overflow-hidden bg-white rounded-lg">
             <div className="px-6 py-4">
                 <h2 className="text-3xl font-bold text-center text-gray-700">Login</h2>
-
                 <h3 className="mt-1 text-xl font-medium text-center text-gray-600">Welcome Back</h3>
-
                 <form onSubmit={(e) => {
                     handleSubmit(e);
                     showNotification({
@@ -88,12 +93,9 @@ const Login = () => {
                             required
                         />
                     </div>
-
-
                     <button className="mt-4 w-full px-4 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none" type="submit">Login</button>
                 </form>
             </div>
-
             <div className="flex items-center justify-center py-4 text-center bg-gray-50">
                 <span className="text-sm text-gray-600">Don&apos;t have an account? </span>
                 <Link href={"/signup"}><a className="mx-2 text-sm font-bold text-blue-500 hover:underline">Register</a></Link>

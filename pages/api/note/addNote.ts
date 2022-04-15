@@ -4,13 +4,12 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-const JWT_SECRET = "HELLO";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  let success: boolean = false;
   console.log(req.body);
   const { title, note, authToken } = req.body;
   if (req.method === "POST") {
@@ -29,13 +28,20 @@ export default async function handler(
       } catch (error) {
         res
           .status(401)
-          .send({ success: false, message: "Please authenticate using a valid token" });
+          .send({
+            success: false,
+            message: "Please authenticate using a valid token",
+          });
       }
     } catch (error: any) {
       console.error(error.message);
-      res.status(500).send({success: false, message:"Internal Server Error"});
+      res
+        .status(500)
+        .send({ success: false, message: "Internal Server Error" });
+    } finally {
+      await prisma.$disconnect();
     }
   } else {
-    res.status(500).send({success: false, message:"Internal Server Error"});
+    res.status(500).send({ success: false, message: "Internal Server Error" });
   }
 }

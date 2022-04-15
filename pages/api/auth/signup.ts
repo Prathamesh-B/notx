@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-const JWT_SECRET = "HELLO";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 export default async function handler(
   req: NextApiRequest,
@@ -53,6 +53,8 @@ export default async function handler(
       res
         .status(500)
         .send({ success: false, message: "Internal Server Error" });
+    } finally {
+      await prisma.$disconnect();
     }
     // const allUsers = await prisma.user.findMany();
     //   const allNotes = await prisma.notes.findMany();

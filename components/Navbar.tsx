@@ -18,7 +18,6 @@ const Navbar: FC<PropsT> = ({ token }) => {
         localStorage.removeItem('token')
         Router.push('/login')
     }
-    console.log(token.value)
     return (
         <header className="p-4">
             <div className="flex justify-between h-16 mx-auto">

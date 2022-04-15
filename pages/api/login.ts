@@ -13,7 +13,6 @@ export default async function handler(
 ) {
   let success: boolean = false;
   const { email, password } = req.body;
-  console.log(req.body)
   if (req.method === "POST") {
     try {
       const user = await prisma.user.findUnique({
@@ -21,7 +20,6 @@ export default async function handler(
           email: email,
         },
       });
-      console.log(user)
       if (!user) {
         return res.status(422).json({
           success: false,
@@ -43,11 +41,6 @@ export default async function handler(
       console.error(error.message);
       res.status(500).send("Internal Server Error");
     }
-
-    // const allUsers = await prisma.user.findMany();
-    //   const allNotes = await prisma.notes.findMany();
-    //   console.log(allNotes);
-    // console.log(allUsers);
   } else {
     res.status(500).send("Internal Server Error");
   }

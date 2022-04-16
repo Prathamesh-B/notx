@@ -10,13 +10,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log(req.body);
   const { NoteID, authToken, title, note } = req.body;
   if (req.method === "PUT") {
     try {
       try {
-        const UserID = jwt.verify(authToken, JWT_SECRET);
-        console.log(UserID);
+        jwt.verify(authToken, JWT_SECRET);
         await prisma.notes.update({
           where: {
             id: parseInt(NoteID),

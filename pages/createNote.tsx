@@ -71,8 +71,6 @@ const CreateNote = () => {
             <Input
               value={title}
               variant="default"
-              minLength={3}
-              maxLength={30}
               name="title"
               onChange={(e:any) => setTitle(e.target.value)}
               placeholder="Title"

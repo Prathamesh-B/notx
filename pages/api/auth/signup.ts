@@ -10,14 +10,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  let success: boolean = false;
-  //   await prisma.user.createMany({
-  //     data: [
-  //       { email: "test@test.com", password: "password" },
-  //       { email: "pratham@gmail.com", password: "09654" },
-  //       { email: "Monket@kk.com", password: "321lol" },
-  //     ],
-  //   });
   if (req.method === "POST") {
     try {
       const user = await prisma.user.findUnique({
@@ -46,8 +38,7 @@ export default async function handler(
         },
       });
       const authtoken = jwt.sign(Uid?.id, JWT_SECRET);
-      success = true;
-      res.status(200).json({ success, authtoken });
+      res.status(200).json({ success: true, authtoken });
     } catch (error: any) {
       console.error(error.message);
       res
@@ -56,10 +47,6 @@ export default async function handler(
     } finally {
       await prisma.$disconnect();
     }
-    // const allUsers = await prisma.user.findMany();
-    //   const allNotes = await prisma.notes.findMany();
-    //   console.log(allNotes);
-    // console.log(allUsers);
   } else {
     res.status(500).send({ success: false, message: "Internal Server Error" });
   }

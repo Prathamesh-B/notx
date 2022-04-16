@@ -10,7 +10,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  let success: boolean = false;
   const { email, password } = req.body;
   if (req.method === "POST") {
     try {
@@ -34,11 +33,12 @@ export default async function handler(
         });
       }
       const authtoken = jwt.sign(user.id, JWT_SECRET);
-      success = true;
       res.status(200).json({ success: true, authtoken });
     } catch (error: any) {
       console.error(error.message);
-      res.status(500).send({ success: false, message: "Internal Server Error" });
+      res
+        .status(500)
+        .send({ success: false, message: "Internal Server Error" });
     } finally {
       await prisma.$disconnect();
     }

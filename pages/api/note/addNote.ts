@@ -10,13 +10,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log(req.body);
   const { title, note, authToken } = req.body;
   if (req.method === "POST") {
     try {
       try {
         const UserID = jwt.verify(authToken, JWT_SECRET);
-        console.log(UserID);
         await prisma.notes.create({
           data: {
             title: title,

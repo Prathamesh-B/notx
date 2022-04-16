@@ -11,7 +11,6 @@ export default async function handler(
     try {
       try {
         const Password = req.headers["admin-password"];
-        console.log(Password);
         if (Password == process.env.ADMIN_PASSWORD) {
           await prisma.user.deleteMany({});
           await prisma.notes.deleteMany({});

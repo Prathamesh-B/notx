@@ -5,7 +5,6 @@ import { PasswordInput, Input } from '@mantine/core';
 import { showNotification, updateNotification } from '@mantine/notifications';
 import { MdOutlineClose } from "react-icons/md";
 import { FaSignInAlt } from "react-icons/fa";
-import { MdOutlineReportGmailerrorred } from "react-icons/md";
 
 const Login = () => {
     useEffect(() => {
@@ -36,7 +35,7 @@ const Login = () => {
                 message: 'Logged in Successfully',
                 loading: false,
             })
-            Router.push("/");
+            Router.push("/createNote");
 
         }
         else {

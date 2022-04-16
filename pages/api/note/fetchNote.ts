@@ -10,18 +10,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log(req.body);
   const { authToken } = req.body;
   try {
     try {
       const UserID = jwt.verify(authToken, JWT_SECRET);
-      console.log(UserID);
       const notes = await prisma.notes.findMany({
         where: {
           userId: parseInt(UserID),
         },
       });
-      res.status(200).json(notes)
+      res.status(200).send({success: true, notes})
     } catch (error) {
       res
         .status(401)

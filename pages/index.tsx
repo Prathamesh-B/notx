@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Link from 'next/link'
 
 const Home: NextPage = () => {
   return (
@@ -7,9 +8,9 @@ const Home: NextPage = () => {
         Best Note Taking Website!
       </h2>
       <div className="flex  justify-center mt-4">
-        <a href="#" className="uppercase py-2 px-4 bg-transparent border-2 border-gray-800 text-gray-800  hover:bg-gray-800 hover:text-white text-md">
-          Start Now
-        </a>
+        <Link href={'/createNote'}><a className="uppercase py-2 px-4 bg-transparent border-2 border-gray-800 text-gray-800  hover:bg-gray-800 hover:text-white text-md">
+          Create Note
+        </a></Link>
       </div>
     </main>
   )

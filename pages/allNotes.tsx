@@ -178,7 +178,7 @@ const AllNotes = () => {
           return <div onClick={() => {
             setOpened(true);
             setModal({ "id": item.id, "note": item.note, "title": item.title })
-          }} key={item.id} className="m-2 max-w-xs max-h-fit  p-6 rounded-md shadow-md bg-gray-100 text-coolGray-50">
+          }} key={item.id} className="m-2 max-w-xs max-h-fit cursor-pointer p-6 rounded-md shadow-md hover:shadow-lg bg-gray-100 text-coolGray-50">
             <h2 className="text-lg md:text-xl font-semibold tracking-wide">{item.title}</h2>
             <p className="text-sm">{item.note}</p>
             <div>

@@ -52,7 +52,7 @@ const AllNotes = () => {
     }
   }, [rerender])
 
-  const haldleUpdate = async (NoteID: string, authToken: any, title: string, note: string) => {
+  const handleUpdate = async (NoteID: string, authToken: any, title: string, note: string) => {
     const response = await fetch('/api/note/updateNote', {
       method: 'PUT',
       headers: {
@@ -84,7 +84,8 @@ const AllNotes = () => {
       })
     }
   }
-  const haldleDelete = async (NoteID: string, authToken: any) => {
+  const handleDelete = async (NoteID: string, authToken: any) => {
+    setOpened(false)
     const response = await fetch('/api/note/deleteNote', {
       method: 'DELETE',
       headers: {
@@ -146,7 +147,7 @@ const AllNotes = () => {
         <div className='flex justify-between'>
           <button onClick={() => {
             let token = localStorage.getItem('token')
-            haldleDelete(modal.id, token)
+            handleDelete(modal.id, token)
             showNotification({
               id: 'delete',
               autoClose: false,
@@ -159,7 +160,7 @@ const AllNotes = () => {
           }} className="m-2 px-4 py-2 leading-5 text-white transition-colors duration-200 transform bg-red-400 rounded hover:bg-red-500 focus:outline-none" type="button">Delete</button>
           <button onClick={() => {
             let token = localStorage.getItem('token')
-            haldleUpdate(modal.id, token, modal.title, modal.note)
+            handleUpdate(modal.id, token, modal.title, modal.note)
             showNotification({
               id: 'update',
               autoClose: false,

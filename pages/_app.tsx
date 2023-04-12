@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import type { AppProps } from 'next/app'
+import Head from 'next/head';
 import Navbar from '../components/Navbar'
 import { NotificationsProvider } from '@mantine/notifications';
 import '../styles/globals.css'
@@ -22,10 +23,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router.query])
 
   return <>
-      <NotificationsProvider>
-        <Navbar token={token} />
-        <Component {...pageProps} />
-      </NotificationsProvider>
+    <Head>
+      <title>Notx</title>
+    </Head>
+    <NotificationsProvider>
+      <Navbar token={token} />
+      <Component {...pageProps} />
+    </NotificationsProvider>
   </>
 }
 

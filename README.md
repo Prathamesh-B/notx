@@ -1,34 +1,91 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center" id="title">Notx</h1>
 
-## Getting Started
+<p align="center"><img src="https://socialify.git.ci/Prathamesh-B/notx/image?description=1&descriptionEditable=Minimal%20note%20taking%20website&font=Inter&language=1&logo=https%3A%2F%2Fraw.githubusercontent.com%2FPrathamesh-B%2Fnotx%2F2344507a10a4b8b34fc4229b5b3d9933a60f3faf%2Fpublic%2Fnotes.svg&name=1&owner=1&pattern=Signal&theme=Light" alt="project-image"></p>
 
-First, run the development server:
+[![----](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)](#)
 
-```bash
-npm run dev
-# or
-yarn dev
+## 🚀 Demo
+
+[https://notx-prathamesh-b.vercel.app/](https://notx-prathamesh-b.vercel.app/)
+
+
+[![----](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)](#)
+
+## 🖼️ Project Screenshots:
+
+<p align="center">
+<img src="https://firebasestorage.googleapis.com/v0/b/portfolio-e4ec7.appspot.com/o/Screenshot%202024-01-23%20201804.png?alt=media&amp;token=bb4c38a6-33cd-44dc-b092-e02861398829" alt="project-screenshot" width="75%">
+<br>
+<img src="https://firebasestorage.googleapis.com/v0/b/portfolio-e4ec7.appspot.com/o/Screenshot%202024-01-23%20201732.png?alt=media&amp;token=385589fb-d3b5-43c5-83f7-9b77c865e06e" alt="project-screenshot" width="75%">
+</p>
+
+[![----](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)](#)
+
+## 🧐 Features
+
+Here're some of the project's best features:
+
+- PostgreSQL
+- Authentication Features
+- CRUD Operations
+
+[![----](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)](#)
+
+## 🛠️ Installation Steps:
+
+<p>1. Install Dependencies</p>
+
+```
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<p>2. Run the Development Server</p>
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+npm run dev
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+<p>3. Open the App in a Browser</p>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+http://localhost:3000
+```
+[![----](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)](#)
 
-## Learn More
+## 💻 Built with
 
-To learn more about Next.js, take a look at the following resources:
+Technologies used in the project:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- NextJS
+- PostgreSQL
+- Tailwindcss
+- Prisma
+- JWT
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+[![----](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)](#)
 
-## Deploy on Vercel
+## ☁️ Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Prathamesh-B/notx)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[![----](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)](#)
+
+## 🌟 Support
+
+If you like this project, give it a ⭐ 
+
+[![GitHub stars](https://img.shields.io/github/stars/Prathamesh-b/notx.svg?style=flat&color=yellow)](https://github.com/Prathamesh-b/notx/stargazers)
+
+
+[![----](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)](#)
+
+## 🛡️ License
+
+
+This project is licensed under the MIT
+
+<p align="center">
+
+[![footer](https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.svg?sanitize=true)](#)
+
+</p>

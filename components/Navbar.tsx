@@ -1,6 +1,6 @@
 import { useState, FC } from 'react'
 import Router from 'next/router';
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import Link from 'next/link';
 import { Burger } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
@@ -20,20 +20,20 @@ const Navbar: FC<PropsT> = ({ token }) => {
     return (
         <header className="p-4">
             <div className="flex justify-between h-16 mx-auto">
-                <Link href={"/"}>
-                    <a className="flex items-center p-4">
-                        <Image src="/notes.svg" width={25} height={25} alt="Logo Img"></Image>
-                    </a>
+                <Link href={"/"} className="flex items-center p-4">
+
+                    <Image src="/notes.svg" width={25} height={25} alt="Logo Img"></Image>
+
                 </Link>
                 <div className="items-center flex-shrink-0 hidden md:flex">
                     {!token.value && <>
-                        <Link href={"/login"} passHref><button className="self-center m-1 px-3 py-2 hover:bg-gray-50 rounded">Log in</button></Link>
-                        <Link href={"/signup"} passHref><button className="self-center m-1 px-3 py-2 hover:bg-gray-50 rounded">Sign up</button></Link>
+                        <Link href={"/login"} passHref legacyBehavior><button className="self-center m-1 px-3 py-2 hover:bg-gray-50 rounded">Log in</button></Link>
+                        <Link href={"/signup"} passHref legacyBehavior><button className="self-center m-1 px-3 py-2 hover:bg-gray-50 rounded">Sign up</button></Link>
                     </>}
                     {token.value && <>
-                        <Link href={"/createNote"} passHref><button className="bg-gray-200 self-center m-1 px-3 py-2 hover:bg-gray-300 rounded">Create Note</button></Link>
-                        <Link href={"/allNotes"} passHref><button className="bg-gray-200 self-center m-1 px-3 py-2 hover:bg-gray-300 rounded">All Notes</button></Link>
-                        <Link href={"/login"} passHref>
+                        <Link href={"/createNote"} passHref legacyBehavior><button className="bg-gray-200 self-center m-1 px-3 py-2 hover:bg-gray-300 rounded">Create Note</button></Link>
+                        <Link href={"/allNotes"} passHref legacyBehavior><button className="bg-gray-200 self-center m-1 px-3 py-2 hover:bg-gray-300 rounded">All Notes</button></Link>
+                        <Link href={"/login"} passHref legacyBehavior>
                             <button onClick={() => {
                                 closeNav(); handleLogout(); showNotification({
                                     id: 'logout',
@@ -57,12 +57,12 @@ const Navbar: FC<PropsT> = ({ token }) => {
             {opened && <div className='z-50 md:hidden bg-white w-screen h-auto absolute left-0 top-20 shadow-md p-4 items-center'>
                 {!token.value &&
                     <>
-                        <Link href={"/login"} passHref><button className="flex flex-col p-2 hover:bg-gray-50 rounded m-auto" onClick={closeNav}>Log in</button></Link>
-                        <Link href={"/signup"} passHref><button className="flex flex-col hover:bg-gray-50 rounded p-2 m-auto" onClick={closeNav}>Sign up</button></Link>
+                        <Link href={"/login"} passHref legacyBehavior><button className="flex flex-col p-2 hover:bg-gray-50 rounded m-auto" onClick={closeNav}>Log in</button></Link>
+                        <Link href={"/signup"} passHref legacyBehavior><button className="flex flex-col hover:bg-gray-50 rounded p-2 m-auto" onClick={closeNav}>Sign up</button></Link>
                     </>}
                 {token.value && <>
-                    <Link href={"/createNote"} passHref><button onClick={closeNav} className="flex flex-col hover:bg-gray-50 rounded p-2 m-auto">Create Note</button></Link>
-                    <Link href={"/allNotes"} passHref><button onClick={closeNav} className="flex flex-col hover:bg-gray-50 rounded p-2 m-auto">All Notes</button></Link>
+                    <Link href={"/createNote"} passHref legacyBehavior><button onClick={closeNav} className="flex flex-col hover:bg-gray-50 rounded p-2 m-auto">Create Note</button></Link>
+                    <Link href={"/allNotes"} passHref legacyBehavior><button onClick={closeNav} className="flex flex-col hover:bg-gray-50 rounded p-2 m-auto">All Notes</button></Link>
                     <button onClick={() => {
                         closeNav(); handleLogout(); showNotification({
                             id: 'logout',
@@ -76,7 +76,7 @@ const Navbar: FC<PropsT> = ({ token }) => {
                 </>}
             </div>}
         </header>
-    )
+    );
 }
 
 export default Navbar

@@ -151,7 +151,7 @@ const AllNotes = () => {
             notifications.show({
               id: 'delete',
               autoClose: false,
-              disallowClose: true,
+              withCloseButton: false,
               color: 'cyan',
               title: "Deleting Note",
               message: 'Waiting for server',
@@ -164,7 +164,7 @@ const AllNotes = () => {
             notifications.show({
               id: 'update',
               autoClose: false,
-              disallowClose: true,
+              withCloseButton: false,
               color: 'cyan',
               title: "Updating Note",
               message: 'Waiting for server',

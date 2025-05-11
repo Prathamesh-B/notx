@@ -62,7 +62,7 @@ const Signup = () => {
                     notifications.show({
                         id: 'signin',
                         autoClose: false,
-                        disallowClose: true,
+                        withCloseButton: false,
                         color: 'cyan',
                         title: "Loding",
                         message: 'Creating New Account',

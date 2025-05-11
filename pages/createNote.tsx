@@ -60,7 +60,7 @@ const CreateNote = () => {
           notifications.show({
             id: 'signin',
             autoClose: false,
-            disallowClose: true,
+            withCloseButton: false,
             color: 'cyan',
             title: "Adding Note",
             message: 'Waiting for server',

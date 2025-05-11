@@ -94,13 +94,14 @@ const Signup = () => {
                     <button className="mt-4 w-full px-4 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none" type="submit">Signup</button>
                 </form>
             </div>
-
             <div className="flex items-center justify-center py-4 text-center bg-gray-50">
                 <span className="text-sm text-gray-600">Already have an account? </span>
-                <Link href={"/login"}><a className="mx-2 text-sm font-bold text-blue-500 hover:underline">Login</a></Link>
+                <Link
+                    href={"/login"}
+                    className="mx-2 text-sm font-bold text-blue-500 hover:underline">Login</Link>
             </div>
         </div>
-    )
+    );
 }
 
 export default Signup

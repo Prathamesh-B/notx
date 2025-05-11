@@ -11,12 +11,14 @@ const Home: NextPage = () => {
         Create, Update, and Delete notes with all Authentication features
       </h1>
       <div className="flex  justify-center mt-4">
-        <Link href={'/createNote'}><a className="uppercase py-2 px-4 bg-transparent border-2 border-gray-800 text-gray-800  hover:bg-gray-800 hover:text-white text-md">
+        <Link
+          href={'/createNote'}
+          className="uppercase py-2 px-4 bg-transparent border-2 border-gray-800 text-gray-800  hover:bg-gray-800 hover:text-white text-md">
           Create Note
-        </a></Link>
+        </Link>
       </div>
     </main>
-  )
+  );
 }
 
 export default Home

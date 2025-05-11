@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Router from 'next/router'
-import { showNotification, updateNotification } from '@mantine/notifications';
+import { notifications } from '@mantine/notifications';
 import { Skeleton } from '@mantine/core';
 import { Modal } from '@mantine/core';
 import { Textarea, Input } from '@mantine/core';
@@ -34,7 +34,7 @@ const AllNotes = () => {
         }
       }
       else {
-        showNotification({
+        notifications.show({
           color: 'red',
           autoClose: 5000,
           icon: <MdOutlineReportGmailerrorred />,
@@ -62,7 +62,7 @@ const AllNotes = () => {
     });
     const json = await response.json()
     if (json.success) {
-      updateNotification({
+      notifications.update({
         id: 'update',
         color: 'green',
         autoClose: 5000,
@@ -73,7 +73,7 @@ const AllNotes = () => {
       })
       setRerender(!rerender)
     } else {
-      updateNotification({
+      notifications.update({
         id: 'update',
         color: 'red',
         autoClose: 5000,
@@ -95,7 +95,7 @@ const AllNotes = () => {
     });
     const json = await response.json()
     if (json.success) {
-      updateNotification({
+      notifications.update({
         id: 'delete',
         color: 'green',
         autoClose: 5000,
@@ -106,7 +106,7 @@ const AllNotes = () => {
       })
       setRerender(!rerender)
     } else {
-      updateNotification({
+      notifications.update({
         id: 'delete',
         color: 'red',
         autoClose: 5000,
@@ -148,7 +148,7 @@ const AllNotes = () => {
           <button onClick={() => {
             let token = localStorage.getItem('token')
             handleDelete(modal.id, token)
-            showNotification({
+            notifications.show({
               id: 'delete',
               autoClose: false,
               disallowClose: true,
@@ -161,7 +161,7 @@ const AllNotes = () => {
           <button onClick={() => {
             let token = localStorage.getItem('token')
             handleUpdate(modal.id, token, modal.title, modal.note)
-            showNotification({
+            notifications.show({
               id: 'update',
               autoClose: false,
               disallowClose: true,

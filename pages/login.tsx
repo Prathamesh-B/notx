@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Router from 'next/router'
 import { PasswordInput, Input } from '@mantine/core';
-import { showNotification, updateNotification } from '@mantine/notifications';
+import { notifications } from '@mantine/notifications';
 import { MdOutlineClose } from "react-icons/md";
 import { FaSignInAlt } from "react-icons/fa";
 
@@ -26,7 +26,7 @@ const Login = () => {
         if (json.success) {
             // Save the auth token and redirect
             localStorage.setItem('token', json.authtoken);
-            updateNotification({
+            notifications.update({
                 id: 'signin',
                 color: 'green',
                 autoClose: 5000,
@@ -39,7 +39,7 @@ const Login = () => {
 
         }
         else {
-            updateNotification({
+            notifications.update({
                 id: 'signin',
                 color: 'red',
                 autoClose: 5000,
@@ -61,7 +61,7 @@ const Login = () => {
                 <h3 className="mt-1 text-xl font-medium text-center text-gray-600">Welcome Back</h3>
                 <form onSubmit={(e) => {
                     handleSubmit(e);
-                    showNotification({
+                    notifications.show({
                         id: 'signin',
                         autoClose: false,
                         disallowClose: true,

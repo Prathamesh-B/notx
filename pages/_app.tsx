@@ -1,10 +1,15 @@
+import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
+
 import { useState, useEffect } from 'react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head';
 import Navbar from '../components/Navbar'
-import { NotificationsProvider } from '@mantine/notifications';
+import { Notifications } from '@mantine/notifications';
 import '../styles/globals.css'
 import { useRouter } from 'next/router';
+import { MantineProvider } from '@mantine/core';
+
 
 interface TokenType {
   value: any;
@@ -22,15 +27,16 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, [router.query])
 
-  return <>
-    <Head>
-      <title>Notx</title>
-    </Head>
-    <NotificationsProvider>
+  return (
+    <MantineProvider >
+      <Head>
+        <title>Notx</title>
+      </Head>
+      <Notifications />
       <Navbar token={token} />
       <Component {...pageProps} />
-    </NotificationsProvider>
-  </>
+    </MantineProvider>
+  )
 }
 
 export default MyApp

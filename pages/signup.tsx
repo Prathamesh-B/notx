@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Router from 'next/router'
 import { PasswordInput, Input } from '@mantine/core';
-import { showNotification, updateNotification } from '@mantine/notifications';
+import { notifications } from '@mantine/notifications';
 import { MdOutlineDone, MdOutlineClose } from "react-icons/md";
 
 const Signup = () => {
@@ -25,7 +25,7 @@ const Signup = () => {
         if (json.success) {
             // Save the auth token and redirect
             localStorage.setItem('token', json.authtoken);
-            updateNotification({
+            notifications.update({
                 id: 'signin',
                 color: 'green',
                 autoClose: 5000,
@@ -37,7 +37,7 @@ const Signup = () => {
             Router.push("/");
         }
         else {
-            updateNotification({
+            notifications.update({
                 id: 'signin',
                 color: 'red',
                 autoClose: 5000,
@@ -59,10 +59,10 @@ const Signup = () => {
                 <h3 className="mt-1 text-xl font-medium text-center text-gray-600">Create Account</h3>
                 <form onSubmit={(e) => {
                     handleSubmit(e);
-                    showNotification({
+                    notifications.show({
                         id: 'signin',
                         autoClose: false,
-                        disallowClose: true,
+                        withCloseButton: false,
                         color: 'cyan',
                         title: "Loding",
                         message: 'Creating New Account',

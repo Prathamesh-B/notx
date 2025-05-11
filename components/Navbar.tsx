@@ -3,7 +3,7 @@ import Router from 'next/router';
 import Image from "next/legacy/image"
 import Link from 'next/link';
 import { Burger } from '@mantine/core';
-import { showNotification } from '@mantine/notifications';
+import { notifications } from '@mantine/notifications';
 import { FaSignOutAlt } from "react-icons/fa";
 
 interface PropsT {
@@ -35,7 +35,7 @@ const Navbar: FC<PropsT> = ({ token }) => {
                         <Link href={"/allNotes"} passHref legacyBehavior><button className="bg-gray-200 self-center m-1 px-3 py-2 hover:bg-gray-300 rounded">All Notes</button></Link>
                         <Link href={"/login"} passHref legacyBehavior>
                             <button onClick={() => {
-                                closeNav(); handleLogout(); showNotification({
+                                closeNav(); handleLogout(); notifications.show({
                                     id: 'logout',
                                     autoClose: true,
                                     color: 'indigo',
@@ -64,7 +64,7 @@ const Navbar: FC<PropsT> = ({ token }) => {
                     <Link href={"/createNote"} passHref legacyBehavior><button onClick={closeNav} className="flex flex-col hover:bg-gray-50 rounded p-2 m-auto">Create Note</button></Link>
                     <Link href={"/allNotes"} passHref legacyBehavior><button onClick={closeNav} className="flex flex-col hover:bg-gray-50 rounded p-2 m-auto">All Notes</button></Link>
                     <button onClick={() => {
-                        closeNav(); handleLogout(); showNotification({
+                        closeNav(); handleLogout(); notifications.show({
                             id: 'logout',
                             autoClose: true,
                             color: 'indigo',

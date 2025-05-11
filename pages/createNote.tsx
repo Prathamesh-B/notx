@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Router from 'next/router'
 import { Textarea, Input } from '@mantine/core';
-import { showNotification, updateNotification } from '@mantine/notifications';
+import { notifications } from '@mantine/notifications';
 import { MdFileDownloadDone, MdOutlineClose } from "react-icons/md";
 
 const CreateNote = () => {
@@ -27,7 +27,7 @@ const CreateNote = () => {
     });
     const json = await response.json()
     if (json.success) {
-      updateNotification({
+      notifications.update({
         id: 'signin',
         color: 'green',
         autoClose: 5000,
@@ -38,7 +38,7 @@ const CreateNote = () => {
       })
     }
     else {
-      updateNotification({
+      notifications.update({
         id: 'signin',
         color: 'red',
         autoClose: 5000,
@@ -57,10 +57,10 @@ const CreateNote = () => {
         <form onSubmit={(e) => {
           const token = localStorage.getItem('token')
           handleSubmit(e, token);
-          showNotification({
+          notifications.show({
             id: 'signin',
             autoClose: false,
-            disallowClose: true,
+            withCloseButton: false,
             color: 'cyan',
             title: "Adding Note",
             message: 'Waiting for server',
